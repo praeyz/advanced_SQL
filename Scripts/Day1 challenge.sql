@@ -1,10 +1,22 @@
-SELECT DISTINCT district FROM address
 
-SELECT rental_date FROM rental 
-ORDER BY rental_id DESC
+--practiced on using schemas and alias
+
+SELECT DISTINCT 
+ga.district
+FROM greencycles.address ga
+
+
+SELECT
+gr.rental_date
+FROM greencycles.rental gr
+ORDER BY gr.rental_id DESC
 LIMIT 10
 
-SELECT count(film_id) FROM film
+SELECT 
+count(gf.film_id) AS no_of_films
+FROM greencycles.film gf
 
-SELECT count(DISTINCT last_name) FROM customer
+SELECT
+count(DISTINCT gc.last_name) AS no_of_districts
+FROM greencycles.customer gc
 
