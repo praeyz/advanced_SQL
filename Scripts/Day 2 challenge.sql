@@ -1,3 +1,6 @@
+
+--Practiced on FILTERING using the the where, Between, AND , OR, like 
+
 SET SEARCH_PATH TO greencycles;
 
 SELECT
@@ -20,7 +23,7 @@ WHERE
 (amount = 10.99 OR amount = 9.99)
 AND
 customer_id = 200
---So since the PostgreSQL treats the AND clause first, its better to put our logic into a bracket. or else it treats an amount and customer id first before the or clause
+--So since the PostgreSQL treats the AND clause first, its better to put our logic into a bracket. or else it treats an amount and customer id first before the OR clause
 
 
  --IN this solution, the AND clause can be used TO JOIN two entities OF WHERE statemeent, THEN an OR STATEMENT can be used futher inbetween statement
@@ -70,7 +73,6 @@ WHERE description LIKE '%Saga%'
 AND (title LIKE 'A%' OR title LIKE '%R')
 
 
---AND (title LIKE 'A%' OR title LIKE '%R')
 
 SELECT 
 *
