@@ -53,3 +53,43 @@ GROUP BY
 ORDER BY 
     total_sold DESC, date(payment_date) DESC
     
+    
+
+SELECT 
+    AVG(amount),
+    customer_id, 
+    Count(payment_id) AS no_of_times_of_payment, 
+    date(payment_date)   
+FROM 
+    payment p 
+WHERE
+    date(payment_date) IN ('2020-04-28','2020-04-29','2020-04-30')
+GROUP BY
+    customer_id, date(payment_date) 
+HAVING
+    Count(payment_id) > 1 AND Count(date(payment_date)) > 1
+ORDER BY 
+     AVG(amount) DESC
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
