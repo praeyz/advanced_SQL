@@ -80,10 +80,83 @@ GROUP BY
     2
     
 
+SET SEARCH_PATH TO greencycles
+
+
+SELECT
+    title,
+    CASE
+        WHEN rating = 'PG' OR rating = 'PG-13' OR length > 210 THEN 'Great rating or long(tier 1)'
+        WHEN description ILIKE '%Drama%' AND length > 90 THEN 'Long drama(tier 2)'
+        WHEN description ILIKE '%Drama%' AND length < 90 THEN 'short drama(tier 3)'
+        WHEN rental_rate < 1 THEN 'Verycheap (tier 4)'
+        ELSE 'no rating'
+    END  AS tier_list
+ FROM 
+    film
+WHERE
+    CASE
+        WHEN rating = 'PG' OR rating = 'PG-13' OR length > 210 THEN 'Great rating or long(tier 1)'
+        WHEN description ILIKE '%Drama%' AND length > 90 THEN 'Long drama(tier 2)'
+        WHEN description ILIKE '%Drama%' AND length < 90 THEN 'short drama(tier 3)'
+        WHEN rental_rate < 1 THEN 'Verycheap (tier 4)'
+        ELSE 'no rating'
+    END
+    != 'no rating'
+
+    
+
+/*CASE WHEN & SUM
+Write a single SQL query to calculate the total income and total expenses from the transactions table.
+
+Additionally, calculate the net income (total income - total expenses) as a separate column in the result.
+
+Key information for the challenge:
+
+Table name: transactions
+
+Column names needed: amount, category
+
+Use aliases for the total income, total expenses, and net income as TotalIncome, TotalExpenses, and NetIncome, respectively.*/
+
+
+SELECT 
+    SUM(CASE WHEN category = 'Income' Then amount else 0 end ) as TotalIncome,
+    SUM(CASE WHEN category = 'Expense' Then amount else 0 end) as TotalExpenses,
+    SUM(CASE WHEN category = 'Income' Then amount else - amount end) as NetIncome
+FROM 
+    transactions
+
+--COALESCE  -Returns the first value of a list of value which is not null
+    
+/*Consider the following table called transactions:
+
+Write a SQL query to retrieve all transactions, displaying the transaction ID, account ID, transaction type, amount, and description.
+
+For any transactions that do not have a description, display 'Not Provided' in place of the NULL value. Ensure your query is ordered by the transaction ID. Make sure to not forget to use the alias description.
+
+Important columns: transaction_id, account_id, transaction_type, amount, description*/
+
+SELECT 
+    transaction_id,
+    account_id,
+    transaction_type,
+    amount,
+    coalesce(description, 'Not Provided') as description
+FROM 
+    transactions
+ORDER BY 
+    transaction_id;
 
 
 
+--COALSCE and CAST
+--cast changes the datatype 
 
-
-
-
+SELECT 
+    rental_date,
+    COALESCE(CAST(return_date AS VARCHAR),'Not returned') AS return_date 
+FROM
+    rental
+ORDER BY 
+    rental_date DESC 
