@@ -107,6 +107,7 @@ WHERE
     
 
 /*CASE WHEN & SUM
+
 Write a single SQL query to calculate the total income and total expenses from the transactions table.
 
 Additionally, calculate the net income (total income - total expenses) as a separate column in the result.
@@ -126,6 +127,8 @@ SELECT
     SUM(CASE WHEN category = 'Income' Then amount else - amount end) as NetIncome
 FROM 
     transactions
+    
+    
 
 --COALESCE  -Returns the first value of a list of value which is not null
     
@@ -151,7 +154,7 @@ ORDER BY
 
 
 --COALSCE and CAST
---cast changes the datatype 
+    --cast changes the datatype  CAST(column_name AS new_data_type)
 
 SELECT 
     rental_date,
@@ -160,3 +163,6 @@ FROM
     rental
 ORDER BY 
     rental_date DESC 
+    
+--REPLACE 
+    --The relace syntax replaces a value or string in a column REPLACE(column_name, 'what to replace', 'what to be replace with')
