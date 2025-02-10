@@ -165,4 +165,4 @@ ORDER BY
     rental_date DESC 
     
 --REPLACE 
-    --The relace syntax replaces a value or string in a column REPLACE(column_name, 'what to replace', 'what to be replace with')
+    --The replace syntax replaces a value or string in a column REPLACE(column_name, 'what to replace', 'what to be replace with')
