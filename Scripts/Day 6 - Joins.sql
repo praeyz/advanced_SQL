@@ -23,7 +23,7 @@ FROM boarding_passes bp
 GROUP BY 
     s.fare_conditions
 ORDER BY 
-    1 DESC
+    1 DESC;
 
     
 /*LEFT OUTER JOIN -- Includes everthing IN the LEFT TABLE AND ONLY the matching ROWS IN the RIGHT COLUMN 
@@ -109,5 +109,5 @@ FROM
 WHERE 
     country = 'Brazil'
 ORDER BY 
-    1,2
+    1,2;
     
