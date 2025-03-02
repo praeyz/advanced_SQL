@@ -21,7 +21,7 @@ FROM
 WHERE length > (SELECT AVG(length)FROM film f )
 
 
-
+----------------------------------------------------------------------------------------------
 --Return all the films that are avaliable in the inventory in store 2 more than 3 times.
 SELECT 
     *
@@ -38,7 +38,7 @@ WHERE
                     film_id 
                 HAVING count(*) > 3);
             
-            
+-----------------------------------------------------------------------------------------------           
 --Return all customers first name and lastnames that have made payment on '2020-01-25'                     
 SELECT 
     first_name,
@@ -53,6 +53,7 @@ WHERE
                      WHERE 
                         DATE(payment_date) = '2020-01-25')
 
+--------------------------------------------------------------------------------------------------                        
 --Return all customers first names and email addresses  that have spent more than 30$    
 SELECT 
     first_name,
@@ -69,7 +70,7 @@ WHERE
                     HAVING sum(amount) > 30 )
 
     
-
+-----------------------------------------------------------------------------------------------------
 --Return all customers first name and last name that are from carlifornia and have spent more than $100 in total 
 SELECT
     c.first_name, 
@@ -89,7 +90,7 @@ AND
                     HAVING
                         sum(amount) > 100);
 
-                        
+-------------------------------------------------------------------------------------------------------                        
 --SUBQUERY FROM 
                         
 --what is the average total amount spent per day(average daily renue)
@@ -104,7 +105,7 @@ FROM
     GROUP BY
         DATE(payment_date));
 
-
+--------------------------------------------------------------------------------------------------------
 --SUBQUERIES IN
 
 --show all the payments together with how much the payment amount is below the maximum payment amount
